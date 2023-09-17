@@ -10,7 +10,8 @@ class SSLPaymentAdmin(admin.ModelAdmin):
         'received_amount',
         'pay_reason',
         'payer_mobile',
-        'payer_email'
+        'payer_email',
+        'payment_month'
     )
 
 

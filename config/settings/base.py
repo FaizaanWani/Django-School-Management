@@ -27,6 +27,7 @@ env = environ.Env(
 )
 # reading .env file
 env.read_env(str(BASE_DIR / "envs/.env"))
+print(env)
 
 SECRET_KEY = env('SECRET_KEY')
 
@@ -135,10 +136,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
-DATABASES = {
-    'default': env.db(),
-}
-
+# DATABASES = {
+#     'default': env.db(),
+# }
+DATABASES= {
+    "default": {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+}}
 CACHES = {
     'default': {
         'BACKEND': 'redis_cache.RedisCache',

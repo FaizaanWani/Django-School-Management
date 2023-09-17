@@ -28,8 +28,10 @@ def index(request):
 
 def online_admission(request):
     if request.method == 'POST':
+        print("fffff")
         form = StudentForm(request.POST, request.FILES)
         if form.is_valid():
+            print("eee")
             data = form.save()
             # TODO: return to payment pages based on global/local payment method
             # return redirect('pages:online_admission_payment', pk=data.pk)

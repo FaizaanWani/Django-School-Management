@@ -156,15 +156,17 @@ def admission_confirmation(request):
         # If confirmation processes is followed by checkmarks,
         # then we confirm admission for only selected candidates.
         checked_registrant_ids = request.POST.getlist('registrant_choice')
-
+        print("checked_registrant_ids",checked_registrant_ids)
         try:
             to_be_admitted = selected_registrants.filter(
                 choosen_department__code=int(dept_code)
             )
+            print("to_be_admitted-!11", to_be_admitted)
             if checked_registrant_ids:
                 to_be_admitted = AdmissionStudent.objects.filter(
                     id__in=list(map(int, checked_registrant_ids))
                 )
+            print("to_be_admitted", to_be_admitted)
         except ValueError:
             messages.add_message(
                 request,
@@ -212,11 +214,14 @@ def admission_confirmation(request):
                     admitted_by=request.user,
                 )
                 students.append(student)
-            except:
-                pass
+            except Exception as e:
+                print(e)
+                # raise e
         ctx['students'] = students
+        print(ctx)
         return render(request, 'students/list/confirm_admission.html', ctx)
     else:
+        print(ctx)
         return render(request, 'students/list/confirm_admission.html', ctx)
 
 
@@ -306,7 +311,13 @@ def add_student_view(request):
     """
     if request.method == 'POST':
         form = StudentForm(request.POST, request.FILES)
+        print("ffff....", request.POST)
+        print(form.non_field_errors())
+        field_errors = [(field.label, field.errors) for field in form]
+        print(field_errors)
+        print("form.is_valid()", form.is_valid())
         if form.is_valid():
+            print("few")
             student = form.save(commit=False)
             # check student as offline registration
             student.application_type = '2'

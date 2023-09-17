@@ -3,6 +3,7 @@ from django.conf import settings
 from django.db import models
 
 from .utils import model_help_texts
+from django_school_management.students.models import Student, AdmissionStudent
 
 
 class SSLPayment(TimeStampedModel):
@@ -17,8 +18,24 @@ class SSLPayment(TimeStampedModel):
         ('admission', 'Online Admission'),
         ('midfee', 'Midterm Exam Fee'),
         ('finalfee', 'Final Exam Fee'),
+        ('monthlyfee', 'Monthly Fee'),
+    )
+    MONTHS = (
+        ('jan', "January"),
+        ('feb', "February"),
+        ('mar', "March")
     )
     transaction_id = models.PositiveIntegerField()
+    student_name = models.ForeignKey(
+        Student,
+        on_delete=models.CASCADE,
+        # related_name='verfied_payments'
+    )
+    #     payment = models.ForeignKey(
+    #     SSLPayment,
+    #     on_delete=models.CASCADE,
+    #     related_name='verfied_payments'
+    # )
     payer = models.CharField(
         model_help_texts.SSLPAYMENT_PAYER,
         max_length=150
@@ -36,6 +53,10 @@ class SSLPayment(TimeStampedModel):
     # By 2021, longest city name has 85 chars.
     payer_city = models.CharField(max_length=85)
     payer_country = models.CharField(max_length=55)
+    payment_month = models.CharField(
+        max_length=10,
+        choices=MONTHS
+    )
 
     class Meta:
         verbose_name_plural = model_help_texts.SSLPAYMENT_VERBOSE_NAME_PLURAL

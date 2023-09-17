@@ -10,11 +10,12 @@ class SSLPaymentTable(tables.Table):
         model  = SSLPayment
         template_name = 'django_tables2/bootstrap-responsive.html'
         fields = (
-            'created',
             'transaction_id',
+            'student_name',
             'payer',
+            'payment_month',
             'received_amount',
             'pay_reason',
             'payer_mobile',
-            'payer_city'
+            'created'
         )

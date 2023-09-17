@@ -7,11 +7,19 @@ from django_school_management.payments.models import SSLPayment
 
 # Check if settings.USE_PAYMENT_OPTIONS is False.
 # otherwise, these variables can't be imported and will raise exception.
-ssl_settings = {
-    'store_id': settings.STORE_ID,
-    'store_pass': settings.STORE_PASS,
-    'issandbox': settings.SSL_ISSANDBOX
-}
+try:
+    ssl_settings = {
+        'store_id': settings.STORE_ID,
+        'store_pass': settings.STORE_PASS,
+        'issandbox': settings.SSL_ISSANDBOX
+    }
+except Exception as e:
+    print(e)
+    ssl_settings = {
+        'store_id': "",
+        'store_pass': "",
+        'issandbox': ""
+    }
 
 
 def store_admission_pay_record(post_body):
@@ -24,7 +32,8 @@ def store_admission_pay_record(post_body):
             payer_mobile=post_body['cus_phone'],
             payer_email=post_body['cus_email'],
             payer_city=post_body['cus_city'],
-            payer_country=post_body['cus_country']
+            payer_country=post_body['cus_country'],
+            payment_month="jan"
         )
         return True
     except:
@@ -56,7 +65,7 @@ def online_admission_sslpayment(request, pk):
     post_body['shipping_method'] = 'NO'
     post_body['num_of_item'] = 1
     post_body['cus_postcode'] = '0000'
-
+    return True
     response = sslcommerz.createSession(post_body)
     import pprint
     print(pprint.pprint(response))

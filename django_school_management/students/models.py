@@ -40,7 +40,7 @@ class StudentBase(TimeStampedModel):
         (0, 'No'),
     )
     name = models.CharField(model_help_texts.STUDENT_BASE_NAME, max_length=100)
-    photo = models.ImageField(upload_to='students/applicant/')
+    photo = models.ImageField(upload_to='students/applicant/', blank=True, null=True)
     fathers_name = models.CharField(model_help_texts.STUDENT_BASE_FATHER_NAME, max_length=100)
     mothers_name = models.CharField(model_help_texts.STUDENT_BASE_MOTHER_NAME, max_length=100)
     date_of_birth = models.DateField(blank=True, null=True)
@@ -114,13 +114,14 @@ class AdmissionStudent(StudentBase):
         max_length=10
     )
     passing_year = models.CharField(max_length=4)
-    group = models.CharField(max_length=15)
-    board = models.CharField(max_length=100)
-    ssc_roll = models.CharField(max_length=10)
-    ssc_registration = models.CharField(max_length=12)
+    group = models.CharField(max_length=15,blank=True, null=True)
+    board = models.CharField(max_length=100, blank=True, null=True)
+    ssc_roll = models.CharField(max_length=10, blank=True, null=True)
+    ssc_registration = models.CharField(max_length=12,blank=True, null=True)
     gpa = models.DecimalField(
         decimal_places=2,
-        max_digits=4
+        max_digits=4,
+        blank=True, null=True
     )
     marksheet_image = models.ImageField(
         model_help_texts.ADMISSION_STUDENT_MARKSHEET_IMAGE,
@@ -131,9 +132,9 @@ class AdmissionStudent(StudentBase):
         model_help_texts.ADMISSION_STUDENT_ADMISSION_POLICY_AGGREMENT_TEXT,
         default=False
     )
-    admitted = models.BooleanField(default=False)
+    admitted = models.BooleanField(default=True)
     admission_date = models.DateField(blank=True, null=True)
-    paid = models.BooleanField(default=False)
+    paid = models.BooleanField(default=True)
     application_type = models.CharField(
         max_length=1,
         choices=APPLICATION_TYPE_CHOICE,
@@ -150,6 +151,7 @@ class AdmissionStudent(StudentBase):
         return f"{self.name}"
 
     def save(self, *args, **kwargs):
+        self.choosen_department = self.department_choice
         if self.department_choice != self.choosen_department:
             status = f'From {self.department_choice} to {self.choosen_department}'
             self.migration_status = status
@@ -181,12 +183,12 @@ class Student(TimeStampedModel):
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL, null=True
     )
-    is_alumni = models.BooleanField(default=False)
-    is_dropped = models.BooleanField(default=False)
+    # is_alumni = models.BooleanField(default=False)
+    # is_dropped = models.BooleanField(default=False)
 
     # Managers
-    objects = StudentManager()
-    alumnus = AlumniManager()
+    # objects = StudentManager()
+    # alumnus = AlumniManager()
 
     class Meta:
         ordering = ['semester', 'roll', 'registration_number']

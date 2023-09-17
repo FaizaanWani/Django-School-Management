@@ -37,6 +37,15 @@ class StudentForm(forms.ModelForm):
         ]
         widgets = {
             'date_of_birth': forms.TextInput({'type': 'date'}),
+            'current_address': forms.HiddenInput(attrs={'value':"dummy"}),
+            'tribal_status': forms.HiddenInput(attrs={'value':"y"}),
+            'children_of_freedom_fighter': forms.HiddenInput(),
+            'passing_year': forms.HiddenInput(attrs={'value':"0000"}),
+            'board': forms.HiddenInput(attrs={'value':"BOSE"}),
+            'ssc_roll': forms.HiddenInput(attrs={'value':"BOSE"}),
+            'ssc_registration': forms.HiddenInput(),
+            'gpa': forms.HiddenInput(),
+            'group': forms.HiddenInput(attrs={'value':"1"})
         }
 
 
@@ -57,7 +66,7 @@ class StudentRegistrantUpdateForm(forms.ModelForm):
             'fathers_name',
             'mothers_name',
             'date_of_birth',
-            'current_address',
+            # 'current_address',
             'permanent_address',
             'mobile_number',
             'email',
@@ -85,5 +94,5 @@ class StudentUpdateForm(forms.ModelForm):
             'registration_number',
             'semester',
             'guardian_mobile',
-            'is_alumni', 'is_dropped'
+            # 'is_alumni', 'is_dropped'
         )
