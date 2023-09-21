@@ -61,6 +61,8 @@ LOCAL_APPS = [
     'django_school_management.institute.apps.InstituteConfig',
     'django_school_management.payments.apps.PaymentsConfig',
     'django_school_management.notices.apps.NoticesConfig',
+    'table',
+    'ajax_datatable'
 ]
 
 # third party apps
