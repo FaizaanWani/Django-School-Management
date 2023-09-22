@@ -17,3 +17,13 @@ MIDDLEWARE += [
 
 # Django-Debug-Toolbar
 INTERNAL_IPS = ['127.0.0.1', '0.0.0.0', '*']
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dtq_dev',
+        'USER': 'postgres',
+        'PASSWORD': '@DTQ#9977',
+        'HOST': '127.0.0.1',
+        'PORT': '5432'
+    }
+}

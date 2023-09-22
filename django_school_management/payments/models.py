@@ -16,16 +16,23 @@ class SSLPayment(TimeStampedModel):
     # NOTE: DO NOT CHANGE THE ORDER OF TUPLE ITEMS.
     SSL_PAY_REASONS = (
         ('admission', 'Online Admission'),
-        ('midfee', 'Midterm Exam Fee'),
-        ('finalfee', 'Final Exam Fee'),
         ('monthlyfee', 'Monthly Fee'),
     )
     MONTHS = (
         ('jan', "January"),
         ('feb', "February"),
-        ('mar', "March")
+        ('mar', "March"),
+        ('apr', "April"),
+        ('may', "May"),
+        ('jun', "June"),
+        ('jul', "July"),
+        ('aug', "August"),
+        ('sep', "September"),
+        ('oct', "October"),
+        ('nov', "November"),
+        ('dec', "December")
     )
-    transaction_id = models.PositiveIntegerField()
+    transaction_id = models.BigIntegerField()
     student_name = models.ForeignKey(
         Student,
         on_delete=models.CASCADE,
@@ -41,7 +48,7 @@ class SSLPayment(TimeStampedModel):
         max_length=150
     )
     received_amount = models.DecimalField(
-        max_digits=8,
+        max_digits=30,
         decimal_places=2
     )
     pay_reason = models.CharField(

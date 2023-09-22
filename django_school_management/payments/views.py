@@ -65,6 +65,7 @@ def TableView(request):
 
 def store_admission_pay_record(post_body):
     try:
+        print(post_body)
         SSLPayment.objects.create(**post_body)
         return True
     except Exception as e:
