@@ -1,4 +1,9 @@
 ALL_ZILA = (
+    ("01", "Srinagar"),
+    ("02", "Baramulla")
+)
+
+ALL_ZILAA = (
     ("01", "Bandarban"),
     ("02", "Barguna"),
     ("03", "Bogra"),

@@ -45,7 +45,8 @@ class StudentForm(forms.ModelForm):
             'ssc_roll': forms.HiddenInput(attrs={'value':"BOSE"}),
             'ssc_registration': forms.HiddenInput(),
             'gpa': forms.HiddenInput(),
-            'group': forms.HiddenInput(attrs={'value':"1"})
+            'group': forms.HiddenInput(attrs={'value':"1"}),
+            'exam_name': forms.HiddenInput(attrs={'value':"hifz"}),
         }
 
 

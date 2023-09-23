@@ -40,7 +40,8 @@ class StudentBase(TimeStampedModel):
         (0, 'No'),
     )
     name = models.CharField(model_help_texts.STUDENT_BASE_NAME, max_length=100)
-    photo = models.ImageField(upload_to='students/applicant/', blank=True, null=True)
+    photo = models.ImageField(upload_to='students/applicant/', blank=True, null=True, default="students/applicant"
+                                                                                              "/default.png")
     fathers_name = models.CharField(model_help_texts.STUDENT_BASE_FATHER_NAME, max_length=100)
     mothers_name = models.CharField(model_help_texts.STUDENT_BASE_MOTHER_NAME, max_length=100)
     date_of_birth = models.DateField(blank=True, null=True)
@@ -92,10 +93,8 @@ class AdmissionStudent(StudentBase):
         ('2', 'Offline')
     )
     EXAM_NAMES = (
-        ('HSC', 'Higher Secondary Certificate'),
-        ('SSC', 'Secondary School Certificate'),
-        ('DAKHIL', 'Dakhil Exam'),
-        ('VOCATIONAL', 'Vocational'),
+        ('naazirah', 'Naazirah'),
+        ('hifz', 'Hifz Quran')
     )
     counseling_by = models.ForeignKey(
         Teacher, related_name='counselors',

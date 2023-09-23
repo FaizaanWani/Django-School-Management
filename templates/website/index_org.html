@@ -1,0 +1,44 @@
+{% extends 'website/partials/website_base.html' %} 
+{% load static %} 
+
+{% block main_content %}
+<!-- Header Section Start -->
+<header id="home" class="hero-area nav-hero">
+  <div class="overlay">
+    <span></span>
+    <span></span>
+  </div>
+
+  {# Navbar #} {% include 'website/partials/website_navbar.html' %}
+
+  <div class="container">
+    <div class="row space-100">
+      <div class="col-lg-6 col-md-12 col-xs-12">
+        <div class="contents">
+          <h2>{{ request_institute.name }}</h2>
+          <p>
+            {% if request_institute.motto %}
+              {{ request_institute.motto|safe }}
+            {% else %}
+              {{ request_institute.description|safe|default:"" }}
+            {% endif %}
+          </p>
+
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12 col-xs-12 p-0">
+        <div class="intro-img">
+          <img
+            src="{% static 'landing/img/intro.png' %}"
+            alt=""
+            style="width: 585px; height: 398px; margin-top: 113px"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Header Section End -->
+
+
+{% endblock %}

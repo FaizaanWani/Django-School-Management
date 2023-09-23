@@ -39,24 +39,24 @@
           </span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="sidebar-link" href="{% url 'pages:landing' %}" target="_blank">
-          <span class="icon-holder">
-            <i class="c-blue-500 ti-share"></i> 
-          </span>
-          <span class="title">Visit Site</span>
-        </a>
-      </li>
+<!--      <li class="nav-item">-->
+<!--        <a class="sidebar-link" href="{% url 'pages:landing' %}" target="_blank">-->
+<!--          <span class="icon-holder">-->
+<!--            <i class="c-blue-500 ti-share"></i> -->
+<!--          </span>-->
+<!--          <span class="title">Visit Site</span>-->
+<!--        </a>-->
+<!--      </li>-->
 
       <!-- USER GUIDE -->
-      <li class="nav-item">
-        <a class="sidebar-link" href="{% url 'pages:userguide' %}">
-          <span class="icon-holder">
-            <i class="c-purple-500 ti-map"></i>
-          </span>
-          <span class="title">User Guide</span>
-        </a>
-      </li>
+<!--      <li class="nav-item">-->
+<!--        <a class="sidebar-link" href="{% url 'pages:userguide' %}">-->
+<!--          <span class="icon-holder">-->
+<!--            <i class="c-purple-500 ti-map"></i>-->
+<!--          </span>-->
+<!--          <span class="title">User Guide</span>-->
+<!--        </a>-->
+<!--      </li>-->
 
     {% if user|has_role:'academic_officer, admin' %}
       <!-- Counsel/Admission Dashboard -->
@@ -205,39 +205,39 @@
       </li>
       {% if user|has_role:'test' %}
       <!-- PUBLISHING OPTIONS -->
-      <li class="nav-item dropdown">
-        <a class="dropdown-toggle" href="javascript:void(0);">
-          <span class="icon-holder">
-            <i class="c-light-blue-500 ti-pencil"></i>
-          </span>
-          <span class="title">Publishing </span>
-          <span class="arrow"><i class="ti-angle-right"></i></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <!-- <a class="sidebar-link" 
-              href="{% url 'articles:dashboard_article_publish' %}">
-              Publish Article
-            </a> -->
-            <a class="sidebar-link" href="{% url 'articles:publish_article_from_dashboard' %}">
-              Publish Article
-            </a>
-            
-            <a class="sidebar-link" 
-              href="{% url 'articles:dashboard_manage' %}">
-              Manage Articles
-            </a>
-            <a href="{% url 'articles:subscribers' %}"
-              class="sidebar-link">
-              Manage Subscribers
-            </a>
-            <hr>
-            <a class="sidebar-link" href="{% url 'notices_dashboard:publish_notice_documents' %}">
-              Publish Notice
-            </a>
-          </li>
-        </ul>
-      </li>
+<!--      <li class="nav-item dropdown">-->
+<!--        <a class="dropdown-toggle" href="javascript:void(0);">-->
+<!--          <span class="icon-holder">-->
+<!--            <i class="c-light-blue-500 ti-pencil"></i>-->
+<!--          </span>-->
+<!--          <span class="title">Publishing </span>-->
+<!--          <span class="arrow"><i class="ti-angle-right"></i></span>-->
+<!--        </a>-->
+<!--        <ul class="dropdown-menu">-->
+<!--          <li>-->
+<!--            &lt;!&ndash; <a class="sidebar-link" -->
+<!--              href="{% url 'articles:dashboard_article_publish' %}">-->
+<!--              Publish Article-->
+<!--            </a> &ndash;&gt;-->
+<!--            <a class="sidebar-link" href="{% url 'articles:publish_article_from_dashboard' %}">-->
+<!--              Publish Article-->
+<!--            </a>-->
+<!--            -->
+<!--            <a class="sidebar-link" -->
+<!--              href="{% url 'articles:dashboard_manage' %}">-->
+<!--              Manage Articles-->
+<!--            </a>-->
+<!--            <a href="{% url 'articles:subscribers' %}"-->
+<!--              class="sidebar-link">-->
+<!--              Manage Subscribers-->
+<!--            </a>-->
+<!--            <hr>-->
+<!--            <a class="sidebar-link" href="{% url 'notices_dashboard:publish_notice_documents' %}">-->
+<!--              Publish Notice-->
+<!--            </a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </li>-->
       {% endif %}
       {% if user|has_role:'accounts, admin' %}
       <!-- PAYMENTS (RESTRICTED) -->

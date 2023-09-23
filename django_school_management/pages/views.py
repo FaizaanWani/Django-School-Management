@@ -23,7 +23,7 @@ def index(request):
         'recent_blogs': recent_blogs,
         'departments': departments,
     }
-    return render(request, 'website/index.html', ctx)
+    return render(request, 'website/index_org.html', ctx)
 
 
 def online_admission(request):
