@@ -222,10 +222,10 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 # login/register redirects
 
-LOGIN_REDIRECT_URL = 'account:profile_complete'
+LOGIN_REDIRECT_URL = 'account:dashboard'
 LOGOUT_REDIRECT_URL = 'account_login'
 
-LOGIN_URL = 'account:profile_complete'
+LOGIN_URL = 'account:dashboard'
 LOGOUT_URL = 'account_logout'
 
 

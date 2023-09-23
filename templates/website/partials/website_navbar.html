@@ -24,9 +24,9 @@
 <!--                <a class="nav-link page-scroll" href="{% url 'articles:home' %}">Blog</a>-->
 <!--              </li>-->
               {% if request.user.is_authenticated %}
-<!--                <li class="nav-item">-->
-<!--                  <a class="nav-link page-scroll" href="{% url 'account:profile_complete' %}">My Account</a>-->
-<!--                </li>-->
+                <li class="nav-item">
+                  <a class="nav-link page-scroll" href="{% url 'account:profile_complete' %}">My Account</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link page-scroll" href="{% url 'account_logout' %}">
                     Logout
@@ -35,12 +35,12 @@
 	            {% else %}
 	            <li class="nav-item">
                   <a class="nav-link page-scroll" href="{% url 'account_login' %}">
-                    signIn/SignUp
+                    Login
                   </a>
               </li>
               {% endif %}
               <li class="nav-item">
-                <a class="btn btn-singin" href="{% url 'account:dashboard' %}">Dashboard</a>
+                <a class="nav-link page-scroll" href="{% url 'account:dashboard' %}">Dashboard</a>
               </li>
             </ul>
           </div>
